@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Accounts from './accounts';
 
 class Header extends Component {
     render() {
@@ -9,7 +10,7 @@ class Header extends Component {
                 <a className="navbar-brand" href="#">CodeBin</a>
               </div>
               <ul className="nav navbar-nav">
-                <li className="active"><a href="#">Sign Up</a></li>
+                <li className="active"><Accounts /></li>
                 <li><a href="#">Create Bin</a></li>
               </ul>
             </div>
