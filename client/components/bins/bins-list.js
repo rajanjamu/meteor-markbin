@@ -29,7 +29,7 @@ class BinsList extends Component {
 
     render() {
         return (
-            <ul className="list-group">
+            <ul className="list-group container">
                 {this.renderList()}
             </ul>
         );
@@ -38,5 +38,7 @@ class BinsList extends Component {
 
 export default withTracker(() => {
     Meteor.subscribe('bins');
+    Meteor.subscribe('sharedBins');
+
     return { bins: Bins.find({}).fetch() };
 })(BinsList);
