@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import Accounts from './accounts';
+import { Link, withRouter } from 'react-router-dom';
 
 class Header extends Component {
 
     onBinClick(event) {
       event.preventDefault();
 
-      Meteor.call('bins.insert');
+      Meteor.call('bins.insert', (error, binId) => {
+        if(error) return console.log(error);          
+
+        this.props.history.push(`/bins/${binId}`);
+      });
+
     }
 
     render() {
+        
         return (
             <nav className="navbar navbar-inverse">
             <div className="container">
               <div className="navbar-header">
-                <a className="navbar-brand" href="#">CodeBin</a>
+                <Link to="/" className="navbar-brand">CodeBin</Link>
               </div>
               <ul className="nav navbar-nav">
                 <li className="active"><Accounts /></li>
@@ -27,4 +34,4 @@ class Header extends Component {
     
 }
 
-export default Header;
+export default withRouter(Header);
